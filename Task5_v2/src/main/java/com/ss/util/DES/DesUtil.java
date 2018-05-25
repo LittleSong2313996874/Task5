@@ -16,8 +16,8 @@ import java.util.Arrays;
 public class DesUtil {
 
     private static  Cipher cipher;
-    private static String algorithm = "DES";  // 算法，如DES
-    public   static String strkey = "effed53d23fe5d76";
+    private static String algorithm;  // 算法，如DES
+    public   static String strkey;
     public static  SecretKey Skey;
     static KeyGenerator keyGenerator;
 
@@ -29,7 +29,8 @@ public class DesUtil {
      *  静态代码块则是在类加载时主动执行
      */
     static {
-
+        algorithm = "DES";
+        strkey = "effed53d23fe5d76";
         Skey = new SecretKeySpec(HextoBytes(strkey),algorithm);
 
     }
@@ -128,10 +129,10 @@ public class DesUtil {
         return new String(buf);
     }
 
-
+/*
     @Test
     public  void testmain(){
-/*
+
       String str = "nihao我好大家好嘻嘻";
 
         byte[] keybytes = gatRandomKey().getEncoded();
@@ -142,7 +143,7 @@ public class DesUtil {
            sb.append(Integer.toBinaryString(keybytes[i])+",");
 
         }
-        System.out.println(sb.toString());*/
+        System.out.println(sb.toString());
 
 
 
@@ -157,6 +158,7 @@ public class DesUtil {
 
 
     }
+*/
 
 }
 

@@ -46,6 +46,10 @@ public class UserController {
             logger.info("登录成功");
             //如果在数据库查到了信息，更登录状态为true
             request.setAttribute("isSuccess",true);
+
+            if("true".equals(request.getParameter("toJson"))){
+                return "redirect:/u/thehome?toJson=true";
+            }
             return "redirect:/u/thehome";
         }
 

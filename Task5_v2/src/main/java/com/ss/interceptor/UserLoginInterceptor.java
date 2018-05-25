@@ -61,7 +61,7 @@ public class UserLoginInterceptor implements HandlerInterceptor {
                         long l = Long.parseLong(time); // String 转 long
                         long Difference = (System.currentTimeMillis() - l) / 1000;
                         logger.info(Difference+"");
-                        if (Difference > 240) { // 超过四分钟就失效
+                        if (Difference > 60*60*5) { // 超过5小时就失效
                             logger.info("超期了。。。 cookie创建时间为"+testConvert.dateUtil(l));
                             logger.info("request.getContextPath()是："+request.getContextPath());
                             cookie.setMaxAge(0); //删除cookie
