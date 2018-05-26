@@ -51,8 +51,11 @@ public class UserLoginInterceptor implements HandlerInterceptor {
                         String token = cookie.getValue();
                         logger.info("访问其他资源时获得token: "+token);
 
-
-                        token = DesUtil.DeCipherMsg(token,DesUtil.Skey);
+                        if(null != DesUtil.Skey){
+                            token = DesUtil.DeCipherMsg(token,DesUtil.Skey);
+                        }else {
+                            logger.warn("小概率事件：密钥为空，此情况仅在非正常使用极端情况下出现");
+                        }
 
                         logger.info("解密后的token："+token);
                         String strarr[] = token.split(":");
